@@ -102,7 +102,7 @@ app.get('/success', (req, res) => {
 
 app.get('/', (req, res) => {
   res.send(`Hello<br>
-    <a href="` + app.mountpath + `/auth" target="${loginAuthTarget}">
+    <a href="${app.mountpath}/auth" target="${loginAuthTarget}">
       Log in with ${oauthProvider.toUpperCase()}
     </a>`)
 })
