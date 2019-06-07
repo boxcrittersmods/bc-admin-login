@@ -1,11 +1,11 @@
 {
-  "name": "netlify-cms-github-oauth-provider",
+  "name": "bc-admin-login",
   "version": "1.0.0",
   "engines": {
     "node": ">=7.x"
   },
   "description": "netlify oauth github client sending token in form as netlify service itself",
-  "repository": "https://github.com/vencax/netlify-cms-github-oauth-provider",
+  "repository": "https://github.com/boxcritter/bc-admin-login",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
