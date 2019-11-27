@@ -31,10 +31,10 @@ Configuration is done with environment variables, which can be supplied as comma
 
 ```
 NODE_ENV=production
-ORIGIN=www.my_organisation.com
-OAUTH_CLIENT_ID=f432a9casdff1e4b79c57
-OAUTH_CLIENT_SECRET=pampadympapampadympapampadympa
-REDIRECT_URL=https://your.server.com/callback
+WS_ORIGIN=www.my_organisation.com
+WS_OAUTH_CLIENT_ID=f432a9casdff1e4b79c57
+WS_OAUTH_CLIENT_SECRET=pampadympapampadympapampadympa
+WS_REDIRECT_URL=https://your.server.com/callback
 GIT_HOSTNAME=https://github.website.com
 ```
 

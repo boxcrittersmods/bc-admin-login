@@ -9,8 +9,8 @@ const loginAuthTarget = process.env.AUTH_TARGET || '_self'
 const app = express()
 const oauth2 = simpleOauthModule.create({
   client: {
-    id: process.env.OAUTH_CLIENT_ID,
-    secret: process.env.OAUTH_CLIENT_SECRET
+    id: process.env.WS_OAUTH_CLIENT_ID,
+    secret: process.env.WS_OAUTH_CLIENT_SECRET
   },
   auth: {
     // Supply GIT_HOSTNAME for enterprise github installs.
@@ -20,7 +20,7 @@ const oauth2 = simpleOauthModule.create({
   }
 })
 
-const originPattern = process.env.ORIGIN || ''
+const originPattern = process.env.WS_ORIGIN || ''
 if (('').match(originPattern)) {
   console.warn('Insecure ORIGIN pattern used. This can give unauthorized users access to your repository.')
   if (process.env.NODE_ENV === 'production') {
@@ -31,7 +31,7 @@ if (('').match(originPattern)) {
 
 // Authorization uri definition
 const authorizationUri = oauth2.authorizationCode.authorizeURL({
-  redirect_uri: process.env.REDIRECT_URL,
+  redirect_uri: process.env.WS_REDIRECT_URL,
   scope: process.env.SCOPES || 'repo,user',
   state: randomstring.generate(32)
 })
@@ -49,10 +49,10 @@ app.get('/callback', (req, res) => {
   }
 
   if (oauthProvider === 'gitlab') {
-    options.client_id = process.env.OAUTH_CLIENT_ID
-    options.client_secret = process.env.OAUTH_CLIENT_SECRET
+    options.client_id = process.env.WS_OAUTH_CLIENT_ID
+    options.client_secret = process.env.WS_OAUTH_CLIENT_SECRET
     options.grant_type = 'authorization_code'
-    options.redirect_uri = process.env.REDIRECT_URL
+    options.redirect_uri = process.env.WS_REDIRECT_URL
   }
 
   oauth2.authorizationCode.getToken(options, (error, result) => {
